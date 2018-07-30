@@ -83,8 +83,7 @@ namespace ComunicacionesMendoza.BLL
 
                     decimal diferencia;
                     diferencia = venta.Total - EntradaAnterior.Total;
-
-                    //aplicar diferencia al inventario
+                    
                     Usuarios usuarios = UsuariosBLL.Buscar(venta.UsuarioId);
                     usuarios.TotalVendido += diferencia;
                     UsuariosBLL.Modificar(usuarios);
