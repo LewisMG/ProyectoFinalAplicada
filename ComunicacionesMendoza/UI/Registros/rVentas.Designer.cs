@@ -491,6 +491,7 @@
             this.ButtonRecibo.Text = "Recibo";
             this.ButtonRecibo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.ButtonRecibo.UseVisualStyleBackColor = false;
+            this.ButtonRecibo.Click += new System.EventHandler(this.ButtonRecibo_Click);
             // 
             // rVentas
             // 

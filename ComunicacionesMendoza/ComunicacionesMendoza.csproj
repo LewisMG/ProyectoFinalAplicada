@@ -179,6 +179,12 @@
     <Compile Include="UI\Ventana Reportes\vProductos.Designer.cs">
       <DependentUpon>vProductos.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Ventana Reportes\vRecibo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Ventana Reportes\vRecibo.Designer.cs">
+      <DependentUpon>vRecibo.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Ventana Reportes\vUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -259,6 +265,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Ventana Reportes\vProductos.resx">
       <DependentUpon>vProductos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Ventana Reportes\vRecibo.resx">
+      <DependentUpon>vRecibo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Ventana Reportes\vUsuarios.resx">
       <DependentUpon>vUsuarios.cs</DependentUpon>

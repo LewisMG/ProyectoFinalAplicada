@@ -175,6 +175,10 @@ namespace ComunicacionesMendoza.BLL
             try
             {
                 ventas = contexto.Venta.Where(expression).ToList();
+                foreach (var item in ventas)
+                {
+                    item.Detalle.Count();
+                }
                 contexto.Dispose();
             }
             catch (Exception)

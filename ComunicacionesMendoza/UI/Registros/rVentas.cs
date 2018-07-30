@@ -1,12 +1,14 @@
 ﻿using ComunicacionesMendoza.BLL;
 using ComunicacionesMendoza.DAL;
 using ComunicacionesMendoza.Entidades;
+using ComunicacionesMendoza.UI.Ventana_Reportes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Windows.Forms;
 
@@ -14,7 +16,7 @@ namespace ComunicacionesMendoza.UI.Registros
 {
     public partial class rVentas : Form
     {
-        //    decimal Total = 0;
+        Expression<Func<Ventas, bool>> filtro = x => true;
 
         public rVentas()
         {
@@ -339,6 +341,12 @@ namespace ComunicacionesMendoza.UI.Registros
         private void CantidadNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
             LlenarImporte();
+        }
+
+        private void ButtonRecibo_Click(object sender, EventArgs e)
+        {
+            vRecibo ver = new vRecibo(BLL.VentasBLL.GetList(filtro));
+            ver.Show();
         }
     }
 }
