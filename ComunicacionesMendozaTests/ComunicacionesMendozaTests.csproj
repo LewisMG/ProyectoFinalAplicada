@@ -65,9 +65,21 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BussinesLogicalLayout\BLL.csproj">
+      <Project>{8302f196-c0a9-4db6-8d49-c1d8a780035d}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ComunicacionesMendoza\ComunicacionesMendoza.csproj">
       <Project>{02B6CB21-B717-48D2-8BF7-06BCA440CE76}</Project>
       <Name>ComunicacionesMendoza</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{6a4b2e97-215f-450d-a75e-b03a1c9f006b}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entidades\Entidades.csproj">
+      <Project>{2adbeaf8-c18d-4b3f-8c04-f1129059d2d9}</Project>
+      <Name>Entidades</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

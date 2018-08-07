@@ -1,5 +1,5 @@
-﻿using ComunicacionesMendoza.DAL;
-using ComunicacionesMendoza.Entidades;
+﻿using DAL;
+using Entidades;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -7,18 +7,18 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace ComunicacionesMendoza.BLL
+namespace BLL
 {
-    public class ProductosBLL
+    public class UsuariosBLL
     {
-        public static bool Guardar(Productos producto)
+        public static bool Guardar(Usuarios usuario)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
 
             try
             {
-                if (contexto.Productos.Add(producto) != null)
+                if (contexto.Usuarios.Add(usuario) != null)
                 {
                     contexto.SaveChanges();
                     paso = true;
@@ -33,7 +33,7 @@ namespace ComunicacionesMendoza.BLL
             return paso;
         }
 
-        public static bool Modificar(Productos producto)
+        public static bool Modificar(Usuarios usuario)
         {
 
             bool paso = false;
@@ -41,7 +41,7 @@ namespace ComunicacionesMendoza.BLL
 
             try
             {
-                contexto.Entry(producto).State = EntityState.Modified;
+                contexto.Entry(usuario).State = EntityState.Modified;
 
                 if (contexto.SaveChanges() > 0)
                 {
@@ -65,11 +65,11 @@ namespace ComunicacionesMendoza.BLL
 
             try
             {
-                Productos producto = contexto.Productos.Find(id);
+                Usuarios usuario = contexto.Usuarios.Find(id);
 
-                if (producto != null)
+                if (usuario != null)
                 {
-                    contexto.Entry(producto).State = EntityState.Deleted;
+                    contexto.Entry(usuario).State = EntityState.Deleted;
                 }
 
                 if (contexto.SaveChanges() > 0)
@@ -86,55 +86,38 @@ namespace ComunicacionesMendoza.BLL
             return paso;
         }
 
-        public static Productos Buscar(int id)
+        public static Usuarios Buscar(int id)
         {
-            Productos producto = new Productos();
+            Usuarios usuario = new Usuarios();
             Contexto contexto = new Contexto();
 
             try
             {
-                producto = contexto.Productos.Find(id);
+                usuario = contexto.Usuarios.Find(id);
                 contexto.Dispose();
             }
             catch (Exception)
             {
                 throw;
             }
-            return producto;
+            return usuario;
         }
 
-        public static List<Productos> GetList(Expression<Func<Productos, bool>> expression)
+        public static List<Usuarios> GetList(Expression<Func<Usuarios, bool>> expression)
         {
-            List<Productos> producto = new List<Productos>();
+            List<Usuarios> usuario = new List<Usuarios>();
             Contexto contexto = new Contexto();
 
             try
             {
-                producto = contexto.Productos.Where(expression).ToList();
+                usuario = contexto.Usuarios.Where(expression).ToList();
                 contexto.Dispose();
             }
             catch (Exception)
             {
                 throw;
             }
-            return producto;
-        }
-
-        public static decimal CalcularGanancia(decimal precioventa, decimal preciocompra)
-        {
-            return precioventa - preciocompra ;
-        }
-
-        public static string RetornarDescripcion(string nombre)
-        {
-            string descripcion = string.Empty;
-            var lista = GetList(x => x.Descripcion.Equals(nombre));
-            foreach (var item in lista)
-            {
-                descripcion = item.Descripcion;
-            }
-
-            return descripcion;
+            return usuario;
         }
     }
 }

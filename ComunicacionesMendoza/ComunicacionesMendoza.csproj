@@ -57,18 +57,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BLL\EntradaProductosBLL.cs" />
-    <Compile Include="BLL\ProductosBLL.cs" />
-    <Compile Include="BLL\UsuariosBLL.cs" />
-    <Compile Include="BLL\VentasBLL.cs" />
-    <Compile Include="DAL\Contexto.cs" />
-    <Compile Include="DAL\IRepository.cs" />
-    <Compile Include="DAL\Repositorio.cs" />
-    <Compile Include="Entidades\EntradaProductos.cs" />
-    <Compile Include="Entidades\Productos.cs" />
-    <Compile Include="Entidades\Usuarios.cs" />
-    <Compile Include="Entidades\Ventas.cs" />
-    <Compile Include="Entidades\VentasDetalle.cs" />
     <Compile Include="LOGIN.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +100,12 @@
     </Compile>
     <Compile Include="UI\Consultas\cVentasDetalles.Designer.cs">
       <DependentUpon>cVentasDetalles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\PreguntaRecibo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\PreguntaRecibo.Designer.cs">
+      <DependentUpon>PreguntaRecibo.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Registros\rEntradaProductos.cs">
       <SubType>Form</SubType>
@@ -228,6 +222,9 @@
     <EmbeddedResource Include="UI\Consultas\cVentasDetalles.resx">
       <DependentUpon>cVentasDetalles.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\PreguntaRecibo.resx">
+      <DependentUpon>PreguntaRecibo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Registros\rEntradaProductos.resx">
       <DependentUpon>rEntradaProductos.cs</DependentUpon>
     </EmbeddedResource>
@@ -275,7 +272,9 @@
     <EmbeddedResource Include="UI\Ventana Reportes\vVentas.resx">
       <DependentUpon>vVentas.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -287,7 +286,20 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\BussinesLogicalLayout\BLL.csproj">
+      <Project>{8302f196-c0a9-4db6-8d49-c1d8a780035d}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{6a4b2e97-215f-450d-a75e-b03a1c9f006b}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entidades\Entidades.csproj">
+      <Project>{2adbeaf8-c18d-4b3f-8c04-f1129059d2d9}</Project>
+      <Name>Entidades</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\WhatsApp Image 2018-07-24 at 2.56.03 PM.jpeg" />
   </ItemGroup>
@@ -307,7 +319,6 @@
     <None Include="Resources\icons8_Smartphone_Tablet_32.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DAL\Scripts\SQLQuery1.sql" />
     <None Include="Resources\icons8_Search_Property_161.png" />
     <None Include="Resources\icons8_Search_Property_16.png" />
     <None Include="Resources\icons8_Find_User_Male_16.png" />
@@ -328,6 +339,15 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_Print_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_Checked_Checkbox_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_No_16.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

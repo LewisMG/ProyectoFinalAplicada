@@ -1,5 +1,5 @@
-﻿using ComunicacionesMendoza.BLL;
-using ComunicacionesMendoza.Entidades;
+﻿using BLL;
+using Entidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -67,7 +67,7 @@ namespace ComunicacionesMendoza.UI.Consultas
                         int id = Convert.ToInt32(CriterioTextBox.Text);                       
                         filtro = x => x.VDetalleId == id;                        
 
-                        if (VentasBLL.GetList(filtro).Count() == 0)
+                        if (VentasBLL.GetListDetalle(filtro).Count() == 0)
                         {
                             MessageBox.Show("No Hay Existencia", "Aviso",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -95,7 +95,7 @@ namespace ComunicacionesMendoza.UI.Consultas
                         int id = Convert.ToInt32(CriterioTextBox.Text);
                         filtro = x => x.VentaId == id;
 
-                        if (VentasBLL.GetList(filtro).Count() == 0)
+                        if (VentasBLL.GetListDetalle(filtro).Count() == 0)
                         {
                             MessageBox.Show("No Hay Existencia", "Aviso",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -123,7 +123,7 @@ namespace ComunicacionesMendoza.UI.Consultas
                         int id = Convert.ToInt32(CriterioTextBox.Text);
                         filtro = x => x.ProductoId == id;
 
-                        if (VentasBLL.GetList(filtro).Count() == 0)
+                        if (VentasBLL.GetListDetalle(filtro).Count() == 0)
                         {
                             MessageBox.Show("No Hay Existencia", "Aviso",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -150,7 +150,7 @@ namespace ComunicacionesMendoza.UI.Consultas
                     {                        
                        filtro = x => x.Producto.Contains(CriterioTextBox.Text);
                        
-                       if (VentasBLL.GetList(filtro).Count() == 0)
+                       if (VentasBLL.GetListDetalle(filtro).Count() == 0)
                        {
                            MessageBox.Show("No Hay Existencia", "Aviso",
                                MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -177,7 +177,7 @@ namespace ComunicacionesMendoza.UI.Consultas
                         int cantidad = Convert.ToInt32(CriterioTextBox.Text);
                         filtro = x => x.Cantidad == cantidad;
                        
-                        if (VentasBLL.GetList(filtro).Count() == 0)
+                        if (VentasBLL.GetListDetalle(filtro).Count() == 0)
                         {
                             MessageBox.Show("No Hay Existencia", "Aviso",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -204,7 +204,7 @@ namespace ComunicacionesMendoza.UI.Consultas
                         decimal Precio = Convert.ToInt32(CriterioTextBox.Text);
                         filtro = x => x.Precio == Precio;
 
-                        if (VentasBLL.GetList(filtro).Count() == 0)
+                        if (VentasBLL.GetListDetalle(filtro).Count() == 0)
                         {
                             MessageBox.Show("No Hay Existencia", "Aviso",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -231,7 +231,7 @@ namespace ComunicacionesMendoza.UI.Consultas
                         int importe = Convert.ToInt32(CriterioTextBox.Text);
                         filtro = x => x.Importe == importe;
 
-                        if (VentasBLL.GetList(filtro).Count() == 0)
+                        if (VentasBLL.GetListDetalle(filtro).Count() == 0)
                         {
                             MessageBox.Show("No Hay Existencia", "Aviso",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -243,7 +243,7 @@ namespace ComunicacionesMendoza.UI.Consultas
                     filtro = x => true;
                     break;
             }
-            VentasDataGridView.DataSource = VentasBLL.GetList(filtro);
+            VentasDataGridView.DataSource = VentasBLL.GetListDetalle(filtro);
             VentasDataGridView.Columns["Productos"].Visible = false;
 
             CriterioTextBox.Clear();

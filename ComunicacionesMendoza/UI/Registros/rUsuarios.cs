@@ -1,5 +1,5 @@
-﻿using ComunicacionesMendoza.BLL;
-using ComunicacionesMendoza.Entidades;
+﻿using BLL;
+using Entidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -59,6 +59,7 @@ namespace ComunicacionesMendoza.UI.Registros
             NombresTextBox.Clear();
             UsuarioTextBox.Clear(); 
             ClaveTextBox.Clear();
+            VerificarClaveTextBox.Clear();
             FechaDateTimePicker.Value = DateTime.Now;
             TotalVendidoTextBox.Clear();
 
@@ -146,14 +147,14 @@ namespace ComunicacionesMendoza.UI.Registros
             bool paso = false;
             Usuarios usuario = Llenaclase();
 
-            if (Validar(2))
-            {
-                MessageBox.Show("Introduzca Las Casillas Correspondientes!");
-            }
             if (VerificarClave())
             {
                 MessageBox.Show("La Contraseña No Es la Misma Verique!");
             }
+            else if (Validar(2))
+            {
+                MessageBox.Show("Introduzca Las Casillas Correspondientes!");
+            }           
             else
             {
                 if (UsuarioIdNumericUpDown.Value == 0)

@@ -1,12 +1,12 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ComunicacionesMendoza.BLL;
+using BLL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ComunicacionesMendoza.Entidades;
+using Entidades;
 
-namespace ComunicacionesMendoza.BLL.Tests
+namespace BLL.Tests
 {
     [TestClass()]
     public class EntradaProductosBLLTests
@@ -16,7 +16,7 @@ namespace ComunicacionesMendoza.BLL.Tests
         {
             bool paso;
             EntradaProductos entradaProductos = new EntradaProductos();
-            entradaProductos.EntradapId = 0;
+            entradaProductos.EntradapId = 1;
             entradaProductos.Fecha = DateTime.Now;
             entradaProductos.ProductoId = 1;
             entradaProductos.Cantidad = 5;
@@ -53,13 +53,13 @@ namespace ComunicacionesMendoza.BLL.Tests
             Assert.IsNotNull(Listar);
         }
 
-        [TestMethod()]
-        public void EliminarTest()
-        {
-            bool paso;
-            int id = 1;
-            paso = EntradaProductosBLL.Eliminar(id);
-            Assert.AreEqual(paso, true);
-        }
+        //[TestMethod()]
+        //public void EliminarTest()
+        //{
+        //    bool paso;
+        //    int id = 1;
+        //    paso = EntradaProductosBLL.Eliminar(id);
+        //    Assert.AreEqual(paso, true);
+        //}
     }
 }

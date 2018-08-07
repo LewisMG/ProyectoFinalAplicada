@@ -1,4 +1,4 @@
-﻿using ComunicacionesMendoza.Entidades;
+﻿using Entidades;
 using ComunicacionesMendoza.UI.Reportes;
 using System;
 using System.Collections.Generic;

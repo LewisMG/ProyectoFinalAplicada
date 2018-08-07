@@ -1,11 +1,11 @@
-﻿using ComunicacionesMendoza.Entidades;
+﻿using Entidades;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
 
-namespace ComunicacionesMendoza.DAL
+namespace DAL
 {
     public class Contexto : DbContext
     {

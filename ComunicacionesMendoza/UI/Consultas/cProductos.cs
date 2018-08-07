@@ -1,5 +1,5 @@
-﻿using ComunicacionesMendoza.BLL;
-using ComunicacionesMendoza.Entidades;
+﻿using BLL;
+using Entidades;
 using ComunicacionesMendoza.UI.Ventana_Reportes;
 using System;
 using System.Collections.Generic;
@@ -223,7 +223,7 @@ namespace ComunicacionesMendoza.UI.Consultas
 
         private void ButtonNuevo_Click(object sender, EventArgs e)
         {
-           vProductos ver = new vProductos(BLL.ProductosBLL.GetList(filtro));
+           vProductos ver = new vProductos(ProductosBLL.GetList(filtro));
            ver.Show();
         }
     }

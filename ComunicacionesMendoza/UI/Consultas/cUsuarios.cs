@@ -1,5 +1,5 @@
-﻿using ComunicacionesMendoza.BLL;
-using ComunicacionesMendoza.Entidades;
+﻿using BLL;
+using Entidades;
 using ComunicacionesMendoza.UI.Ventana_Reportes;
 using System;
 using System.Collections.Generic;
@@ -178,7 +178,7 @@ namespace ComunicacionesMendoza.UI.Consultas
 
         private void ButtonImprimir_Click(object sender, EventArgs e)
         {
-            vUsuarios ver = new vUsuarios(BLL.UsuariosBLL.GetList(filtro));
+            vUsuarios ver = new vUsuarios(UsuariosBLL.GetList(filtro));
             ver.Show();
         }
     }

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 
-namespace ComunicacionesMendoza.Entidades
+namespace Entidades
 {
     public class Ventas
     {
@@ -15,6 +15,8 @@ namespace ComunicacionesMendoza.Entidades
         public string Descripcion { get; set; }
         public string NombreCliente { get; set; }
         public string TelefonoCliente { get; set; }
+        public decimal SubTotal { get; set; }
+        public decimal Itbis { get; set; }
         public decimal Total { get; set; }
 
         public virtual ICollection<VentasDetalle> Detalle { get; set; }

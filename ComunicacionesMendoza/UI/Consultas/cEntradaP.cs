@@ -1,14 +1,9 @@
-﻿using ComunicacionesMendoza.BLL;
-using ComunicacionesMendoza.Entidades;
+﻿using BLL;
+using Entidades;
 using ComunicacionesMendoza.UI.Ventana_Reportes;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using System.Windows.Forms;
 
 namespace ComunicacionesMendoza.UI.Consultas
@@ -174,7 +169,7 @@ namespace ComunicacionesMendoza.UI.Consultas
 
         private void ButtonNuevo_Click(object sender, EventArgs e)
         {
-            vEntradaProducto ver = new vEntradaProducto(BLL.EntradaProductosBLL.GetList(filtro));
+            vEntradaProducto ver = new vEntradaProducto(EntradaProductosBLL.GetList(filtro));
             ver.Show();
         }
     }

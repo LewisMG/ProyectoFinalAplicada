@@ -1,6 +1,6 @@
-﻿using ComunicacionesMendoza.BLL;
-using ComunicacionesMendoza.DAL;
-using ComunicacionesMendoza.Entidades;
+﻿using BLL;
+using DAL;
+using Entidades;
 using ComunicacionesMendoza.UI.Ventana_Reportes;
 using System;
 using System.Collections.Generic;
@@ -16,13 +16,14 @@ namespace ComunicacionesMendoza.UI.Registros
 {
     public partial class rVentas : Form
     {
-        Expression<Func<Ventas, bool>> filtro = x => true;
-
         public rVentas()
         {
             InitializeComponent();
             LlenarCombobox();
         }
+
+        decimal itbis = 0;
+        decimal Total = 0;
 
         public void LimpiarCampos()
         {
@@ -32,6 +33,8 @@ namespace ComunicacionesMendoza.UI.Registros
             NombreClienteTextBox.Clear();
             TelefonomaskedTextBox.Clear();
             CantidadNumericUpDown.Value = 0;
+            SubTotalTextBox.Text = 0.ToString();
+            ItbisTextBox.Text = 0.ToString();
             TotalTextBox.Clear();
 
             ImporteTextBox.Clear();
@@ -75,7 +78,9 @@ namespace ComunicacionesMendoza.UI.Registros
             ventas.Descripcion = DescripcionTextBox.Text;
             ventas.UsuarioId = Convert.ToInt32(UsuariosComboBox.SelectedValue);
             ventas.NombreCliente = NombreClienteTextBox.Text;
-            ventas.TelefonoCliente = TelefonomaskedTextBox.Text; 
+            ventas.TelefonoCliente = TelefonomaskedTextBox.Text;
+            ventas.SubTotal = Convert.ToDecimal(SubTotalTextBox.Text);
+            ventas.Itbis = Convert.ToDecimal(ItbisTextBox.Text);
             ventas.Total = Convert.ToDecimal(TotalTextBox.Text);
 
             foreach (DataGridViewRow item in VentaDetalleDataGridView.Rows)
@@ -100,6 +105,8 @@ namespace ComunicacionesMendoza.UI.Registros
             DescripcionTextBox.Text = ventas.Descripcion;
             NombreClienteTextBox.Text = ventas.NombreCliente;
             TelefonomaskedTextBox.Text = ventas.TelefonoCliente;
+            SubTotalTextBox.Text = ventas.SubTotal.ToString();
+            ItbisTextBox.Text = ventas.Itbis.ToString();
             TotalTextBox.Text = ventas.Total.ToString();
 
             VentaDetalleDataGridView.DataSource = ventas.Detalle;
@@ -196,13 +203,21 @@ namespace ComunicacionesMendoza.UI.Registros
             int x = Convert.ToInt32(CantidadNumericUpDown.Value);
             producto.Inventario -= x;
 
-            decimal Total = 0;
+            decimal subtotal = 0;
 
             foreach (var item in detalle)
             {
-                Total += item.Importe;
+                subtotal += item.Importe;
             }
-          
+
+            SubTotalTextBox.Text = subtotal.ToString();
+
+            itbis = VentasBLL.CalcularItbis(Convert.ToDecimal(SubTotalTextBox.Text));
+
+            ItbisTextBox.Text = itbis.ToString();
+
+            Total = VentasBLL.CalcularTotal(Convert.ToDecimal(SubTotalTextBox.Text), Convert.ToDecimal(ItbisTextBox.Text));
+
             TotalTextBox.Text = Total.ToString();
         }
 
@@ -218,14 +233,21 @@ namespace ComunicacionesMendoza.UI.Registros
                 int x = Convert.ToInt32(CantidadNumericUpDown.Value);
                 producto.Inventario += x;
 
-                decimal Total = 0;
+                decimal subtotal = 0;
 
                 foreach (var item in detalle)
                 {
-                    Total -= item.Importe;
+                    subtotal -= item.Importe;
                 }
 
-                Total *= (-1);
+                subtotal *= (-1);
+                SubTotalTextBox.Text = subtotal.ToString();
+
+                itbis = VentasBLL.CalcularItbis(Convert.ToDecimal(SubTotalTextBox.Text));
+                ItbisTextBox.Text = itbis.ToString();
+
+                Total = VentasBLL.CalcularTotal(Convert.ToDecimal(SubTotalTextBox.Text), Convert.ToDecimal(ItbisTextBox.Text));
+
                 TotalTextBox.Text = Total.ToString();
 
                 VentaDetalleDataGridView.DataSource = null;
@@ -256,6 +278,7 @@ namespace ComunicacionesMendoza.UI.Registros
                 if (VentaIdNumericUpDown.Value == 0)
                 {
                     Paso = VentasBLL.Guardar(venta);
+                    
                 }
                 else
                 {
@@ -267,6 +290,8 @@ namespace ComunicacionesMendoza.UI.Registros
                     LimpiarCampos();
                     MessageBox.Show("Guardado!!", "Exito",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    PreguntaRecibo fRM = new PreguntaRecibo(venta.VentaId);
+                    fRM.ShowDialog();
                 }
                 else
                     MessageBox.Show("No se pudo guardar!!", "Fallo",
@@ -316,6 +341,20 @@ namespace ComunicacionesMendoza.UI.Registros
                 paso = true;
             }
 
+            if (error == 2 && (UsuariosComboBox.SelectedIndex < 0))
+            {
+                GeneralErrorProvider.SetError(UsuariosComboBox,
+                    "Agrege El usuario");
+                paso = true;
+            }
+
+            if (error == 2 && (ProductoComboBox.SelectedIndex < 0))
+            {
+                GeneralErrorProvider.SetError(ProductoComboBox,
+                    "Agrege Un Producto");
+                paso = true;
+            }
+
             if (error == 2 && VentaDetalleDataGridView.RowCount == 0)
             {
                 GeneralErrorProvider.SetError(VentaDetalleDataGridView,
@@ -345,8 +384,31 @@ namespace ComunicacionesMendoza.UI.Registros
 
         private void ButtonRecibo_Click(object sender, EventArgs e)
         {
-            vRecibo ver = new vRecibo(BLL.VentasBLL.GetList(filtro));
-            ver.Show();
+            int id = Convert.ToInt32(VentaIdNumericUpDown.Value);
+            Ventas venta = VentasBLL.Buscar(id);
+                       
+            int Id = Convert.ToInt32(VentaIdNumericUpDown.Value);
+            List<Ventas> ventas = new List<Ventas>();
+
+            if (venta != null)
+            {
+                if (VentaIdNumericUpDown.Value > 0)
+                {
+                    ventas = VentasBLL.GetList(v => v.VentaId == Id);
+                    vRecibo vRecibo = new vRecibo(ventas);
+                    vRecibo.ShowDialog();
+                }
+                else 
+                {
+                    MessageBox.Show("Introduzca un Id!!", "Fallo",
+                         MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No Hay Una Venta Con Ese Id!!", "Fallo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

@@ -1,6 +1,6 @@
-﻿using ComunicacionesMendoza.BLL;
-using ComunicacionesMendoza.DAL;
-using ComunicacionesMendoza.Entidades;
+﻿using BLL;
+using DAL;
+using Entidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

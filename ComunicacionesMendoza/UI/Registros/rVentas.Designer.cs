@@ -56,6 +56,11 @@
             this.GeneralErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.label10 = new System.Windows.Forms.Label();
             this.UsuariosComboBox = new System.Windows.Forms.ComboBox();
+            this.ItbisTextBox = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.SubTotalTextBox = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.ButtonRecibo = new System.Windows.Forms.Button();
             this.ButtonRemover = new System.Windows.Forms.Button();
             this.ButtonAgregar = new System.Windows.Forms.Button();
             this.ButtonBuscar = new System.Windows.Forms.Button();
@@ -63,7 +68,6 @@
             this.ButtonNuevo = new System.Windows.Forms.Button();
             this.ButtonEliminar = new System.Windows.Forms.Button();
             this.ButtonGuardar = new System.Windows.Forms.Button();
-            this.ButtonRecibo = new System.Windows.Forms.Button();
             descripcionLabel = new System.Windows.Forms.Label();
             VentaIdLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.VentaDetalleDataGridView)).BeginInit();
@@ -238,7 +242,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Rockwell", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(466, 445);
+            this.label12.Location = new System.Drawing.Point(466, 496);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(41, 14);
             this.label12.TabIndex = 99;
@@ -246,7 +250,7 @@
             // 
             // TotalTextBox
             // 
-            this.TotalTextBox.Location = new System.Drawing.Point(513, 442);
+            this.TotalTextBox.Location = new System.Drawing.Point(513, 493);
             this.TotalTextBox.Name = "TotalTextBox";
             this.TotalTextBox.ReadOnly = true;
             this.TotalTextBox.Size = new System.Drawing.Size(100, 20);
@@ -332,6 +336,63 @@
             this.UsuariosComboBox.Name = "UsuariosComboBox";
             this.UsuariosComboBox.Size = new System.Drawing.Size(154, 21);
             this.UsuariosComboBox.TabIndex = 106;
+            // 
+            // ItbisTextBox
+            // 
+            this.ItbisTextBox.Location = new System.Drawing.Point(513, 467);
+            this.ItbisTextBox.Name = "ItbisTextBox";
+            this.ItbisTextBox.ReadOnly = true;
+            this.ItbisTextBox.Size = new System.Drawing.Size(100, 20);
+            this.ItbisTextBox.TabIndex = 108;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Rockwell", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(441, 470);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(71, 14);
+            this.label11.TabIndex = 107;
+            this.label11.Text = "ITBIS 18%:";
+            // 
+            // SubTotalTextBox
+            // 
+            this.SubTotalTextBox.Location = new System.Drawing.Point(513, 441);
+            this.SubTotalTextBox.Name = "SubTotalTextBox";
+            this.SubTotalTextBox.ReadOnly = true;
+            this.SubTotalTextBox.Size = new System.Drawing.Size(100, 20);
+            this.SubTotalTextBox.TabIndex = 110;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Rockwell", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(442, 447);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(67, 14);
+            this.label13.TabIndex = 109;
+            this.label13.Text = "Sub-Total:";
+            // 
+            // ButtonRecibo
+            // 
+            this.ButtonRecibo.BackColor = System.Drawing.Color.MediumBlue;
+            this.ButtonRecibo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonRecibo.FlatAppearance.BorderSize = 0;
+            this.ButtonRecibo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkGray;
+            this.ButtonRecibo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
+            this.ButtonRecibo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonRecibo.Font = new System.Drawing.Font("Rockwell", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonRecibo.ForeColor = System.Drawing.Color.White;
+            this.ButtonRecibo.Image = global::ComunicacionesMendoza.Properties.Resources.icons8_Print_16;
+            this.ButtonRecibo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ButtonRecibo.Location = new System.Drawing.Point(12, 479);
+            this.ButtonRecibo.Name = "ButtonRecibo";
+            this.ButtonRecibo.Size = new System.Drawing.Size(87, 36);
+            this.ButtonRecibo.TabIndex = 111;
+            this.ButtonRecibo.Text = "Generar Recibo";
+            this.ButtonRecibo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ButtonRecibo.UseVisualStyleBackColor = false;
+            this.ButtonRecibo.Click += new System.EventHandler(this.ButtonRecibo_Click);
             // 
             // ButtonRemover
             // 
@@ -421,7 +482,7 @@
             this.ButtonNuevo.ForeColor = System.Drawing.Color.White;
             this.ButtonNuevo.Image = global::ComunicacionesMendoza.Properties.Resources.icons8_Add_New_32;
             this.ButtonNuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ButtonNuevo.Location = new System.Drawing.Point(96, 476);
+            this.ButtonNuevo.Location = new System.Drawing.Point(117, 476);
             this.ButtonNuevo.Name = "ButtonNuevo";
             this.ButtonNuevo.Size = new System.Drawing.Size(102, 42);
             this.ButtonNuevo.TabIndex = 74;
@@ -463,7 +524,7 @@
             this.ButtonGuardar.ForeColor = System.Drawing.Color.White;
             this.ButtonGuardar.Image = global::ComunicacionesMendoza.Properties.Resources.icons8_Save_32;
             this.ButtonGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ButtonGuardar.Location = new System.Drawing.Point(216, 476);
+            this.ButtonGuardar.Location = new System.Drawing.Point(225, 476);
             this.ButtonGuardar.Name = "ButtonGuardar";
             this.ButtonGuardar.Size = new System.Drawing.Size(102, 42);
             this.ButtonGuardar.TabIndex = 72;
@@ -472,27 +533,6 @@
             this.ButtonGuardar.UseVisualStyleBackColor = false;
             this.ButtonGuardar.Click += new System.EventHandler(this.ButtonGuardar_Click);
             // 
-            // ButtonRecibo
-            // 
-            this.ButtonRecibo.BackColor = System.Drawing.Color.MediumBlue;
-            this.ButtonRecibo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ButtonRecibo.FlatAppearance.BorderSize = 0;
-            this.ButtonRecibo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkGray;
-            this.ButtonRecibo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
-            this.ButtonRecibo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonRecibo.Font = new System.Drawing.Font("Rockwell", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonRecibo.ForeColor = System.Drawing.Color.White;
-            this.ButtonRecibo.Image = global::ComunicacionesMendoza.Properties.Resources.icons8_Printer_32;
-            this.ButtonRecibo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ButtonRecibo.Location = new System.Drawing.Point(511, 476);
-            this.ButtonRecibo.Name = "ButtonRecibo";
-            this.ButtonRecibo.Size = new System.Drawing.Size(102, 42);
-            this.ButtonRecibo.TabIndex = 107;
-            this.ButtonRecibo.Text = "Recibo";
-            this.ButtonRecibo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.ButtonRecibo.UseVisualStyleBackColor = false;
-            this.ButtonRecibo.Click += new System.EventHandler(this.ButtonRecibo_Click);
-            // 
             // rVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -500,6 +540,10 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(625, 524);
             this.Controls.Add(this.ButtonRecibo);
+            this.Controls.Add(this.SubTotalTextBox);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.ItbisTextBox);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.UsuariosComboBox);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.PanelCliente);
@@ -578,6 +622,10 @@
         private System.Windows.Forms.Button ButtonBuscar;
         private System.Windows.Forms.ComboBox UsuariosComboBox;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox SubTotalTextBox;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox ItbisTextBox;
+        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button ButtonRecibo;
     }
 }

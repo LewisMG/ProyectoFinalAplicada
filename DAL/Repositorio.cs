@@ -5,7 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace ComunicacionesMendoza.DAL
+namespace DAL
 {
     public class Repositorio<T> : IDisposable, IRepository<T> where T : class
     {

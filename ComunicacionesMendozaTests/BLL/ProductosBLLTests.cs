@@ -1,12 +1,12 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ComunicacionesMendoza.BLL;
+using BLL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ComunicacionesMendoza.Entidades;
+using Entidades;
 
-namespace ComunicacionesMendoza.BLL.Tests
+namespace BLL.Tests
 {
     [TestClass()]
     public class ProductosBLLTests
@@ -16,7 +16,7 @@ namespace ComunicacionesMendoza.BLL.Tests
         {
             bool paso;
             Productos productos = new Productos();
-            productos.ProductoId = 0;
+            productos.ProductoId = 1;
             productos.Descripcion = "Iphone 6";
             productos.Costo = 13000;
             productos.Ganancia = 2000;
@@ -58,29 +58,12 @@ namespace ComunicacionesMendoza.BLL.Tests
         }
 
         //[TestMethod()]
-        //public void CalcularGananciaTest()
+        //public void EliminarTest()
         //{
-        //    Productos productos = new Productos();
-        //    productos = ProductosBLL.CalcularGanancia(15820, 12000);
-        //    Assert.IsNotNull(productos);
+        //    bool paso;
+        //    int id = 1;
+        //    paso = ProductosBLL.Eliminar(id);
+        //    Assert.AreEqual(paso, true);
         //}
-
-        //[TestMethod()]
-        //public void RetornarDescripcionTest()
-        //{
-        //    string nombre = "Lewis";
-        //    Productos productos = new Productos();
-        //    productos = ProductosBLL.RetornarDescripcion(nombre);
-        //    Assert.IsNotNull(productos);
-        //}
-
-        [TestMethod()]
-        public void EliminarTest()
-        {
-            bool paso;
-            int id = 1;
-            paso = ProductosBLL.Eliminar(id);
-            Assert.AreEqual(paso, true);
-        }
     }
 }

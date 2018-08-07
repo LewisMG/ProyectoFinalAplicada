@@ -1,12 +1,14 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ComunicacionesMendoza.BLL;
+using BLL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ComunicacionesMendoza.Entidades;
+using Entidades;
+using System.Linq.Expressions;
+using DAL;
 
-namespace ComunicacionesMendoza.BLL.Tests
+namespace BLL.Tests
 {
     [TestClass()]
     public class VentasBLLTests
@@ -16,14 +18,17 @@ namespace ComunicacionesMendoza.BLL.Tests
         {
             bool paso;
             Ventas ventas = new Ventas();
-            ventas.VentaId = 0;
+            ventas.VentaId = 1;
             ventas.UsuarioId = 1;
             ventas.Fecha = DateTime.Now;
             ventas.Descripcion = "Venta de equipo";
             ventas.NombreCliente = "Marledy";
             ventas.TelefonoCliente = "809-361-1686";
-            ventas.Detalle.Add(new VentasDetalle(1,1,2, "Iphone 6",1,15000,15000));
-            ventas.Total = 15000;
+            ventas.Itbis = 2700;
+            ventas.SubTotal = 15000;
+            ventas.Total = 17700;
+            
+            ventas.Detalle.Add(new VentasDetalle(1,1,1, "Iphone 6",1,15000,15000));
             paso = VentasBLL.Guardar(ventas);
             Assert.AreEqual(paso, true);
         }
@@ -31,37 +36,47 @@ namespace ComunicacionesMendoza.BLL.Tests
         [TestMethod()]
         public void ModificarTest()
         {
-            Assert.Fail();
-        }
+            //int idVenta = VentasBLL.GetList(x => true)[0].VentaId;
+            Ventas ventas = new Ventas();//VentasBLL.Buscar(idVenta);
+            ventas.VentaId = 1;
+            ventas.UsuarioId = 1;
+            ventas.Fecha = DateTime.Now;
+            ventas.Descripcion = "Venta de equipo";
+            ventas.NombreCliente = "Maggy";
+            ventas.TelefonoCliente = "829-899-6654";
+            ventas.Itbis = 2700;
+            ventas.SubTotal = 15000;
+            ventas.Total = 17700;
 
-        [TestMethod()]
-        public void EliminarTest()
-        {
-            Assert.Fail();
+            ventas.Detalle.Add(new VentasDetalle(1, 1, 1, "Iphone 6", 1, 15000, 15000));
+            bool paso = VentasBLL.Modificar(ventas);
+            Assert.AreEqual(paso, true);
         }
 
         [TestMethod()]
         public void BuscarTest()
         {
-            Assert.Fail();
+            int idVenta = VentasBLL.GetList(x => true)[0].VentaId;
+            Ventas ventas = VentasBLL.Buscar(idVenta);
+            bool paso = ventas.Detalle.Count > 0;
+            Assert.AreEqual(true, paso);
         }
 
         [TestMethod()]
         public void GetListTest()
         {
-            Assert.Fail();
+            var Listar = VentasBLL.GetList(x => true);
+            Assert.IsNotNull(Listar);
         }
 
-        [TestMethod()]
-        public void GetListTest1()
-        {
-            Assert.Fail();
-        }
+        //[TestMethod()]
+        //public void EliminarTest()
+        //{
+        //    bool paso;
+        //    int id = 1;
+        //    paso = VentasBLL.Eliminar(id);
+        //    Assert.AreEqual(paso, true);
+        //}
 
-        [TestMethod()]
-        public void CalcularImporteTest()
-        {
-            Assert.Fail();
-        }
     }
 }

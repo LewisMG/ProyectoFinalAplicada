@@ -1,5 +1,5 @@
-﻿using ComunicacionesMendoza.BLL;
-using ComunicacionesMendoza.Entidades;
+﻿using BLL;
+using Entidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -50,6 +50,7 @@ namespace ComunicacionesMendoza
             }
             if ((UsuariologtextBox.Text == "Admin") && (ClavetextBox.Text == "061098"))
             {
+                this.Hide();
                 MainForm ver = new MainForm();
                 ver.Show();
             }
@@ -60,8 +61,9 @@ namespace ComunicacionesMendoza
 
                 if (user.Exists(x => x.NombreUser == UsuariologtextBox.Text) && user.Exists(x => x.Clave == ClavetextBox.Text))
                 {
+                    this.Hide();
                     MainForm ver = new MainForm();
-                    ver.Show();
+                    ver.Show();                    
                 }
                 else
                 {

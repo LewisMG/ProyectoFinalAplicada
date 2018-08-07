@@ -1,5 +1,6 @@
-﻿using ComunicacionesMendoza.DAL;
-using ComunicacionesMendoza.Entidades;
+﻿
+using DAL;
+using Entidades;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -7,7 +8,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace ComunicacionesMendoza.BLL
+namespace BLL
 {
     public class VentasBLL
     {
@@ -58,6 +59,7 @@ namespace ComunicacionesMendoza.BLL
                     UsuariosBLL.Modificar(Usuario);
                     UsuariosBLL.Modificar(UsuarioAnt);
                 }
+
                 if (Ventas != null)
                 {
                     foreach (var item in venta.Detalle)
@@ -188,7 +190,7 @@ namespace ComunicacionesMendoza.BLL
             return ventas;
         }
 
-        public static List<VentasDetalle> GetList(Expression<Func<VentasDetalle, bool>> expression)
+        public static List<VentasDetalle> GetListDetalle(Expression<Func<VentasDetalle, bool>> expression)
         {
             List<VentasDetalle> ventas = new List<VentasDetalle>();
             Contexto contexto = new Contexto();
@@ -210,6 +212,15 @@ namespace ComunicacionesMendoza.BLL
         {
             return precio * cantidad;
         }
-        
+
+        public static decimal CalcularItbis(decimal subtotal)
+        {
+            return Convert.ToDecimal(subtotal) * Convert.ToDecimal(0.18);
+        }
+
+        public static decimal CalcularTotal(decimal subtotal, decimal itbis)
+        {
+            return Convert.ToDecimal(subtotal) + Convert.ToDecimal(itbis);
+        }
     }
 }
